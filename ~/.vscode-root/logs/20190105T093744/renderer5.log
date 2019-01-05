@@ -1,0 +1,4 @@
+[2019-01-05 11:56:45.279] [renderer5] [info] no standard startup: not just one window
+[2019-01-05 11:56:46.482] [renderer5] [error] net::ERR_NAME_RESOLUTION_FAILED: {1}
+[2019-01-05 11:57:07.611] [renderer5] [info] no standard startup: not just one window
+[2019-01-05 11:57:07.617] [renderer5] [error] net::ERR_NAME_RESOLUTION_FAILED: {1}

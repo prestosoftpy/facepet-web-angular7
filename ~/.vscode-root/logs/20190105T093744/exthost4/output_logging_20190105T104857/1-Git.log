@@ -1,0 +1,40 @@
+Looking for git in: git
+Using git 2.11.0 from git
+> git rev-parse --show-toplevel
+> git config --get commit.template
+Open repository: /home/gustavo/Documentos/git/angular-tour-of-heroes
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse master
+> git rev-parse --symbolic-full-name master@{u}
+> git rev-list --left-right master...refs/remotes/origin/master
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git show :src/app/hero.service.ts
+> git check-ignore -z --stdin
+> git show :src/app/hero.service.ts
+> git show :src/app/message.service.ts
+> git show :src/app/message.service.spec.ts
+> git show :src/app/hero.service.ts
+> git check-ignore -z --stdin
+> git show :src/app/message.service.ts
+> git show :src/app/message.service.spec.ts
+> git show :src/app/hero.service.ts
+> git show :src/app/heroes/heroes.component.ts
+> git show :src/app/heroes/heroes.component.html
+> git check-ignore -z --stdin
+> git check-ignore -z --stdin
+> git show :src/app/hero-detail/hero-detail.component.html
+> git show :src/app/hero-detail/hero-detail.component.css
+> git show :src/app/hero-detail/hero-detail.component.ts
+> git show :src/app/heroes/heroes.component.spec.ts
+> git check-ignore -z --stdin
+> git show :src/app/hero.service.ts
+> git show :src/app/heroes/heroes.component.ts
+> git show :src/app/hero.service.ts
+> git show :src/app/heroes/heroes.component.ts
+> git show :src/app/heroes/heroes.component.html
+> git show :src/app/heroes/heroes.component.css
+> git show :src/app/heroes/heroes.component.ts
+> git show :src/app/app-routing.module.ts
+> git show :src/app/app.module.ts

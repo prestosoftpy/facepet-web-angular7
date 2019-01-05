@@ -1,0 +1,8 @@
+[2019-01-05 09:37:44.990] [main] [info] update#setState idle
+[2019-01-05 09:38:14.999] [main] [info] update#setState checking for updates
+[2019-01-05 09:38:15.575] [main] [info] update#setState idle
+[2019-01-05 10:38:15.117] [main] [info] update#setState checking for updates
+[2019-01-05 10:38:16.152] [main] [info] update#setState idle
+[2019-01-05 11:38:15.410] [main] [info] update#setState checking for updates
+[2019-01-05 11:38:16.160] [main] [error] Error: net::ERR_NAME_RESOLUTION_FAILED
+[2019-01-05 11:38:16.161] [main] [info] update#setState idle
