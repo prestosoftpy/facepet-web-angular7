@@ -1,0 +1,21 @@
+<h2>Mis eventos</h2>
+
+<div>
+  <label>Evento nombre:
+    <input #eventoNombre />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(eventoNombre.value); eventoNombre.value=''">
+    add
+  </button>
+</div>
+
+<ul class="eventos">
+  <li *ngFor="let evento of eventos">
+    <a >
+      <span class="badge">{{evento.id}}</span> {{evento.nombre}}
+    </a>
+    <button class="delete" title="delete evento"
+      (click)="delete(evento)">x</button>
+  </li>
+</ul>
