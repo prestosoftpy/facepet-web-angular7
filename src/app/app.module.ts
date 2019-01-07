@@ -9,6 +9,8 @@ import { HomeComponent } from './home/home.component';
 import { UsuariosComponent } from './usuarios-calito/usuarios.component';
 import { UsuariosListComponent } from './usuarios-list/usuarios-list.component';
 import { CiudadesComponent } from './ciudades/ciudades.component';
+import { EventosListComponent } from './eventos-list/eventos-list.component';
+import { EventosFormComponent } from './eventos-form/eventos-form.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { CiudadesComponent } from './ciudades/ciudades.component';
     UsuariosComponent,
     UsuariosListComponent,
     CiudadesComponent,
+    EventosListComponent,
+    EventosFormComponent,
   ],
   imports: [
     BrowserModule,
