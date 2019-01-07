@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { HttpClientModule }    from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -9,6 +8,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { UsuariosComponent } from './usuarios-calito/usuarios.component';
 import { UsuariosListComponent } from './usuarios-list/usuarios-list.component';
+import { CiudadesComponent } from './ciudades/ciudades.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,8 @@ import { UsuariosListComponent } from './usuarios-list/usuarios-list.component';
     NavbarComponent,
     HomeComponent,
     UsuariosComponent,
-    UsuariosListComponent
+    UsuariosListComponent,
+    CiudadesComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,6 +25,6 @@ import { UsuariosListComponent } from './usuarios-list/usuarios-list.component';
     HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

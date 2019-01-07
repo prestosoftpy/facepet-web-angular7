@@ -1,0 +1,21 @@
+<h2>Ciudades</h2>
+
+<div>
+  <label>Nombre:
+    <input #ciudadName />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(ciudadName.value); ciudadName.value=''">
+    agregar
+  </button>
+</div>
+
+<ul class="CiudadesComponent">
+  <li *ngFor="let ciudad of ciudades">
+    <a routerLink="/detail/{{ciudad.id}}">
+      <span class="badge">{{ciudad.id}}</span> {{ciudad.nombre}} {{ciudad.imagen}} {{ciudad.activo}}
+    </a>
+    <button class="delete" title="delete ciudad"
+      (click)="delete(ciudad)">x</button>
+  </li>
+</ul>
