@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { catchError, tap } from 'rxjs/operators';
 
 const httpOptions = {
-  headers: new HttpHeaders({'Content-type':'application-json'})
+  headers: new HttpHeaders({'Content-type': 'application-json'})
 };
 
 @Injectable({
