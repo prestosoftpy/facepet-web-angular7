@@ -1,7 +1,7 @@
 
 <body>
 
-  <nav class="navbar navbar-default navbar-inverse" role="navigation">
+  <nav class="navbar navbar-dark bg-primary">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -11,41 +11,31 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Facepet</a>
+         <a class="navbar-brand" href="#" style="color:beige;"><i class="fa fa-home"></i>
+         Facepet</a>
+        <br>
       </div>
   
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Eventos</a></li>
-          <li><a class="nav-link" [routerLink]="['usuarios-calito']">Usuarios Calito</a></li>
-          <li><a class="nav-link" [routerLink]="['usuarios']">Usuarios</a></li>
-          <li><a class="nav-link" [routerLink]="['ciudades']">Ciudades</a></li>
-          <li><a class="nav-link" [routerLink]="['eventos']">Eventos</a></li>
+          <li><a class="nav-link"  [routerLink]="['usuarios-form']" style="color:black;">Nuevo Usuario</a></li>
+          <li><a class="nav-link" [routerLink]="['usuarios']" style="color:black;">Usuarios</a></li>
+          <li><a class="nav-link" [routerLink]="['ciudades']" style="color:black;">Ciudades</a></li>
+          <li><a class="nav-link" [routerLink]="['eventos']" style="color:black;">Eventos</a></li>
         </ul>
-        <form class="navbar-form navbar-left" role="search">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="buscar">
-          </div>
-          <button type="submit" class="btn btn-default">Buscar</button>
-        </form>
-  
+       
   
         <ul class="nav navbar-nav navbar-right">
           <li><p class="navbar-text">Tienes una cuenta?</p></li>
         
           <li class="dropdown">
-            <a href="" class="dropdown-toggle" data-toggle="dropdown"><b>Entrar</b> <span class="caret"></span></a>
+            <a href="" class="dropdown-toggle" data-toggle="dropdown" style="color:black;"><b>Entrar</b> <span class="caret"></span></a>
         <ul id="login-dp" class="dropdown-menu">
           <li>
              <div class="row">
-                <div class="col-md-12">
-                  Logearse con
-                  <div class="social-buttons">
-                    <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
-                    <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
-                  </div>
-                                  or
+                <div class="col-md-11">
+                
                    <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
                       <div class="form-group">
                          <label class="sr-only" for="exampleInputEmail2">Email address</label>
@@ -61,13 +51,13 @@
                       </div>
                       <div class="checkbox">
                          <label>
-                         <input type="checkbox"> keep me logged-in
+                         <input type="checkbox"> Recordar contraseña?
                          </label>
                       </div>
                    </form>
                 </div>
                 <div class="bottom text-center">
-                  New here ? <a href="#"><b>Join Us</b></a>
+                  Nuevo aqui? <a class="nav-link" [routerLink]="['usuarios']"><b>Registrarse</b></a>
                 </div>
              </div>
           </li>
@@ -78,5 +68,6 @@
     </div><!-- /.container-fluid -->
   </nav>
   
+
   
   </body>

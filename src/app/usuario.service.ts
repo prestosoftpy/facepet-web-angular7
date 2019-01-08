@@ -28,7 +28,7 @@ export class UsuarioService {
         catchError(this.handleError('getUsuarios', []))
       );
   }*/
-  getUsuarios(): Observable<any>{
+  getUsuarios(): Observable<any> {
     return this.http.get('http://localhost:3000/usuarios');
   }
 
@@ -72,6 +72,7 @@ export class UsuarioService {
   /** POST: add a new hero to the server */
   addUsuario (usuario: Usuario): Observable<Usuario> {
     return this.http.post<Usuario>(this.usuariosUrl, usuario, httpOptions).pipe(
+      // tslint:disable-next-line:no-shadowed-variable
       tap((usuario: Usuario) => this.log(`added usuario w/ id=${usuario.id}`)),
       catchError(this.handleError<Usuario>('addUsuario'))
     );
