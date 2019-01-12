@@ -2,11 +2,11 @@
 <div class="box-body">
 
     <table class="table table-bordered table-striped dt-responsive tablas">
- 
+
         <thead>
- 
+
             <tr>
- 
+
                 <th style="width:10px">#</th>
                 <th>Nombre</th>
                 <th>Correo</th>
@@ -14,37 +14,37 @@
                 <th>Ciudad</th>
                 <th>Estado</th>
                 <th>Acciones</th>
- 
+
             </tr>
- 
+
         </thead>
- 
+
         <tbody *ngFor="let usuario of usuarios">
- 
+
             <tr>
                 <td>{{usuario.id}}</td>
                 <td>{{usuario.nombre}}</td>
                 <td>{{usuario.correo}}</td>
                 <td>{{usuario.celular}}</td>
                 <td>{{usuario.ciudadId}}</td>
-                <td><button class="btn btn-success btn-xs">Activo</button></td>
+                <td><button class="btn btn-success btn-xs">Activado</button></td>
                 <td>
- 
+
                     <div class="btn-group">
- 
+
                         <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
- 
+
                         <button class="btn btn-danger"><i class="fa fa-times"></i></button>
- 
+
                     </div>
- 
+
                 </td>
- 
+
             </tr>
- 
- 
+
+
         </tbody>
- 
+
     </table>
- 
- </div>
+
+</div>

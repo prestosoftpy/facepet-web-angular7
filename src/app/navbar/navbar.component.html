@@ -1,89 +1,24 @@
-
-<body>
-
-  <!--<nav class="navbar navbar-dark bg-primary">
-    <div class="container-fluid">
-   
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-         <a class="navbar-brand" [routerLink]="['home']" style="color:beige;"><i class="fa fa-home"></i>
-         Facepet</a>
-        <br>
-      </div>
-  
-     
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li><a class="nav-link"  [routerLink]="['usuarios-form']" style="color:black;">Nuevo Usuario</a></li>
-          <li><a class="nav-link" [routerLink]="['usuarios']" style="color:black;">Usuarios</a></li>
-          <li><a class="nav-link" [routerLink]="['ciudades']" style="color:black;">Ciudades</a></li>
-          <li><a class="nav-link" [routerLink]="['eventos']" style="color:black;">Eventos</a></li>
-        </ul>
-       
-  
-        <ul class="nav navbar-nav navbar-right">
-          <li><p class="navbar-text">Tienes una cuenta?</p></li>
-        
-          <li class="dropdown">
-            <a href="" class="dropdown-toggle" data-toggle="dropdown" style="color:black;"><b>Entrar</b> <span class="caret"></span></a>
-        <ul id="login-dp" class="dropdown-menu">
-          <li>
-             <div class="row">
-                <div class="col-md-11">
-                
-                   <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
-                      <div class="form-group">
-                         <label class="sr-only" for="exampleInputEmail2">Email address</label>
-                         <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
-                      </div>
-                      <div class="form-group">
-                         <label class="sr-only" for="exampleInputPassword2">Password</label>
-                         <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
-                                               <div class="help-block text-right"><a href="">Olvido su Contraseña ?</a></div>
-                      </div>
-                      <div class="form-group">
-                         <button type="submit" class="btn btn-primary btn-block">Entrar</button>
-                      </div>
-                      <div class="checkbox">
-                         <label>
-                         <input type="checkbox"> Recordar contraseña?
-                         </label>
-                      </div>
-                   </form>
-                </div>
-                <div class="bottom text-center">
-                  Nuevo aqui? <a class="nav-link" [routerLink]="['usuarios']"><b>Registrarse</b></a>
-                </div>
-             </div>
-          </li>
-        </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>-->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">Facepet</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav mr-auto">
-        <li><a class="nav-link"  [routerLink]="['usuarios-form']" style="color:black;">Nuevo Usuario</a></li>
-          <li><a class="nav-link" [routerLink]="['usuarios']" style="color:black;">Usuarios</a></li>
-          <li><a class="nav-link" [routerLink]="['ciudades']" style="color:black;">Ciudades</a></li>
-          <li><a class="nav-link" [routerLink]="['eventos']" style="color:black;">Eventos</a></li>
-      </ul>
-      <span class="navbar-text">
-        Navbar text with an inline element
-      </span>
-    </div>
-  </nav>
-
-  
-  </body>
+    <a class="navbar-brand" [routerLink]="['home']" style="color:beige;"><i class="fa fa-home"></i>
+      Facepet</a>
+    <br>
+  </div>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li><a class="nav-link" [routerLink]="['usuarios-form']" style="color:black;">Nuevo Usuario</a></li>
+      <li><a class="nav-link" [routerLink]="['usuarios']" style="color:black;">Usuarios</a></li>
+      <li><a class="nav-link" [routerLink]="['ciudades']" style="color:black;">Ciudades</a></li>
+      <li><a class="nav-link" [routerLink]="['eventos']" style="color:black;">Eventos</a></li>
+    </ul>
+    <span class="navbar-text">
+      Navbar text with an inline element
+    </span>
+  </div>
+</nav>
