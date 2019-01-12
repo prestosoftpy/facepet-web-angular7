@@ -1,21 +1,35 @@
 <h2>Ciudades</h2>
 
-<div>
-  <label>Nombre:
-    <input #ciudadName />
-  </label>
-  <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)="add(ciudadName.value); ciudadName.value=''">
-    agregar
-  </button>
-</div>
+<div class="box-body">
 
-<ul class="CiudadesComponent">
-  <li *ngFor="let ciudad of ciudades">
-    <a routerLink="/detail/{{ciudad.id}}">
-      <span class="badge">{{ciudad.id}}</span> {{ciudad.nombre}} {{ciudad.imagen}} {{ciudad.activo}}
-    </a>
-    <button class="delete" title="delete ciudad"
-      (click)="delete(ciudad)">x</button>
-  </li>
-</ul>
+ <table class="table table-bordered table-striped dt-responsive tablas">
+
+   <thead>
+
+     <tr>
+
+       <th style="width:10px">Id</th>
+       <th>Nombre</th>
+       <th>Ciudad</th>
+       <th>Estado</th>
+
+     </tr>
+
+   </thead>
+
+   <tbody *ngFor="let ciudad of ciudades">
+
+     <tr>
+       <td>{{ciudad.id}}</td>
+       <td>{{ciudad.nombre}}</td>
+       <td>{{ciudad.imagen}}</td>
+       <td>{{ciudad.activo}}</td>
+
+     </tr>
+
+
+   </tbody>
+
+ </table>
+
+</div>

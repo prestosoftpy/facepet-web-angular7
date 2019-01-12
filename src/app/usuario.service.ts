@@ -14,7 +14,7 @@ const httpOptions = {
 @Injectable({ providedIn: 'root' })
 export class UsuarioService {
 
-  private usuariosUrl = 'http://localhost:3000/usuarios';  // URL to web api
+  private usuariosUrl = 'https://facepet-api.herokuapp.com/usuarios';  // URL to web api
 
   constructor(
     private http: HttpClient,
@@ -29,7 +29,7 @@ export class UsuarioService {
       );
   }*/
   getUsuarios(): Observable<any> {
-    return this.http.get('http://localhost:3000/usuarios');
+    return this.http.get('https://facepet-api.herokuapp.com/usuarios');
   }
 
   /** GET usuario by id. Return `undefined` when id not found */

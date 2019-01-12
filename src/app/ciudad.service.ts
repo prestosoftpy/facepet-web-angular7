@@ -18,6 +18,6 @@ export class CiudadService {
     private http: HttpClient) { }
 
     getCiudades(): Observable<any>{
-      return this.http.get('http://localhost:3000/ciudades');
+      return this.http.get('https://facepet-api.herokuapp.com/ciudades');
     }
 }
