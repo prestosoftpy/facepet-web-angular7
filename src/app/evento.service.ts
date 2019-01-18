@@ -21,12 +21,8 @@ export class EventoService {
     private messageService: MessageService) { }
 
   /** GET heroes from the server */
-  getEventos (): Observable<Evento[]> {
-    return this.http.get<Evento[]>(this.eventosUrl)
-      .pipe(
-        tap(_ => this.log('fetched eventos')),
-        catchError(this.handleError('getEventos', []))
-      );
+  getEventos(): Observable<any> {
+    return this.http.get('https://facepet-api.herokuapp.com/eventos');
   }
 
   /** GET hero by id. Return `undefined` when id not found */

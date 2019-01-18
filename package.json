@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve -o",
+    "start": "ng serve -o --host 0.0.0.0",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -20,7 +20,9 @@
     "@angular/platform-browser": "~7.0.0",
     "@angular/platform-browser-dynamic": "~7.0.0",
     "@angular/router": "~7.0.0",
+    "angular-font-awesome": "^3.1.2",
     "core-js": "^2.5.4",
+    "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
     "rxjs": "~6.3.3",
     "zone.js": "~0.8.26"
