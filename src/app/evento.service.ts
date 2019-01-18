@@ -14,7 +14,7 @@ const httpOptions = {
 @Injectable({ providedIn: 'root' })
 export class EventoService {
 
-  private eventosUrl = 'api/eventos';  // URL to web api
+  private eventosUrl = 'https://facepet-api.herokuapp.com/eventos';
 
   constructor(
     private http: HttpClient,
@@ -22,7 +22,7 @@ export class EventoService {
 
   /** GET heroes from the server */
   getEventos(): Observable<any> {
-    return this.http.get('https://facepet-api.herokuapp.com/eventos');
+    return this.http.get(this.eventosUrl);
   }
 
   /** GET hero by id. Return `undefined` when id not found */
