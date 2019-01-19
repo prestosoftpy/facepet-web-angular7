@@ -1,5 +1,4 @@
-
-    #card{
+#card{
     margin-left: 10px; 
     background-size: cover;
     background-repeat: no-repeat;
@@ -10,12 +9,7 @@
     background-color:burlywood;
     background-image: url(perroico.jpg);  /*Aquí pon el color del fondo que quieras para este lateral*/
     float:left; /*Aqui determinas de lado quieres quede esta "columna" */
-    }
-    
-   
-    /* You can add global styles to this file, and also import other style files */
-
-
+}
 
 hr {
     border-color: white;
