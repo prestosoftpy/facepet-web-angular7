@@ -1,13 +1,13 @@
 export class Evento {
-    id: number;
-    name: string;
+    id: number;;
     fecha: Date;
-    ciudadId:number;
-    nombre:string;
-    descripcion:string;
-    latitud:number;
-    longitud:number;
-    imagenUrl:string;
-    situacion:string;
-    activo:number;
+    ciudadId: number;
+    nombre: string;
+    descripcion: string;
+    latitud: number;
+    longitud: number;
+    imagenUrl: string;
+    situacion: number;
+    usuarioIdAdoptador:number;
+    activo: number;
 }

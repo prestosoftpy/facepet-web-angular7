@@ -72,10 +72,6 @@ hr {
     animation-name: fadeIn;
 }
 
-
-
-
-
 .flotante {
     display:scroll;
         position: fixed;
@@ -84,6 +80,5 @@ hr {
         right:1px;
         top: 90%;
         width: 60px;
-
 }
 

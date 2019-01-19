@@ -1,5 +1,5 @@
 <br>
-<div class="card-columns ">
+<div class="card-columns">
   <div *ngFor="let evento of eventos" class="card">
     <img class="card-img-top" [src]="evento.imagenUrl" alt="Card image cap" class="img-thumb" >
     <div class="card-body">
@@ -8,9 +8,8 @@
       <p class="card-text-rigth"><small class="text-muted">Alzado {{evento.fecha}}</small></p>
     
        <div class="text-center">
-          <a  href="#" class="btn btn-primary">Adoptar</a>
+          <a class="btn btn-primary" (click)="adoptar(evento.id)" >Adoptar</a>
       </div>
-     
   </div>
 </div>
 <div class='flotante'>

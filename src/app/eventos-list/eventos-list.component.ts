@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Evento } from '../evento';
-import { EventoService} from '../evento.service'
+import { EventoService } from '../evento.service';
 
 @Component({
   selector: 'app-eventos-list',
@@ -9,17 +9,27 @@ import { EventoService} from '../evento.service'
 })
 export class EventosListComponent implements OnInit {
 
-  eventos:Evento[];
-  constructor(private eventoService: EventoService  ) { }
+  eventos: Evento[];
 
-  
+  constructor(private eventoService: EventoService) { }
+
   ngOnInit() {
     this.getEventos();
   }
+
   getEventos(): void {
     this.eventoService.getEventos()
-    .subscribe(eventos => this.eventos = eventos);
+    .subscribe(result => this.eventos = result);
   }
+  
+  adoptar(id) {
+    if (window.confirm('Desea adoptar esta mascota?')) {
+      let situacion = 1;
+      let usuarioIdAdoptador = 1;
+      this.update({id, situacion, usuarioIdAdoptador} as Evento);
+    }
+  };
+
   add(nombre: string): void {
     nombre = nombre.trim();
     if (!nombre) { return; }
@@ -27,6 +37,13 @@ export class EventosListComponent implements OnInit {
       .subscribe(hero => {
         this.eventos.push(hero);
       });
+  }
+
+  update(evento: Evento): void {
+    this.eventoService.updateEvento(evento).subscribe(result => {
+      alert("Gracias por adoptar!");
+      this.getEventos();
+    });
   }
 
   delete(evento: Evento): void {

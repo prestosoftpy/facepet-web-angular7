@@ -81,10 +81,10 @@ export class EventoService {
     );
   }
 
-  /** PUT: update the hero on the server */
+  /** PUT: update the evento on the server */
   updateEvento (evento: Evento): Observable<any> {
-    return this.http.put(this.eventosUrl, evento, httpOptions).pipe(
-      tap(_ => this.log(`updated hero id=${evento.id}`)),
+    return this.http.put(this.eventosUrl + "/" + evento.id, evento, httpOptions).pipe(
+      tap(_ => this.log(`updated evento id=${evento.id}`)),
       catchError(this.handleError<any>('updateEvento'))
     );
   }
