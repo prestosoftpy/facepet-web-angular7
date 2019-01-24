@@ -7,9 +7,9 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent {
 
-anio: number;
+  anio: number;
+  constructor() {
+    this.anio = new Date().getFullYear();
+  }
 
-constructor() {
-  this.anio = new Date().getFullYear();
-}
 }
