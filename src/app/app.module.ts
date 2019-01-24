@@ -12,6 +12,7 @@ import { UsuariosListComponent } from './usuarios-list/usuarios-list.component';
 import { CiudadesComponent } from './ciudades/ciudades.component';
 import { EventosListComponent } from './eventos-list/eventos-list.component';
 import { EventosFormComponent } from './eventos-form/eventos-form.component';
+import { Footer } from './components/footer.component/footer.component.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { EventosFormComponent } from './eventos-form/eventos-form.component';
     CiudadesComponent,
     EventosListComponent,
     EventosFormComponent,
+    Footer.ComponentComponent,
   ],
   imports: [
     BrowserModule,
