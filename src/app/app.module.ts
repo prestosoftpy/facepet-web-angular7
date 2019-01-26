@@ -14,6 +14,7 @@ import { EventosListComponent } from './eventos-list/eventos-list.component';
 import { EventosFormComponent } from './eventos-form/eventos-form.component';
 import { CiudadFormComponent } from './ciudad-form/ciudad-form.component';
 import { FormsModule } from '@angular/forms';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { FormsModule } from '@angular/forms';
     EventosListComponent,
     EventosFormComponent,
     CiudadFormComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
