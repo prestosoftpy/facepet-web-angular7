@@ -12,6 +12,8 @@ import { UsuariosListComponent } from './usuarios-list/usuarios-list.component';
 import { CiudadesComponent } from './ciudades/ciudades.component';
 import { EventosListComponent } from './eventos-list/eventos-list.component';
 import { EventosFormComponent } from './eventos-form/eventos-form.component';
+import { CiudadFormComponent } from './ciudad-form/ciudad-form.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,11 +25,13 @@ import { EventosFormComponent } from './eventos-form/eventos-form.component';
     CiudadesComponent,
     EventosListComponent,
     EventosFormComponent,
+    CiudadFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
