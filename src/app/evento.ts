@@ -1,5 +1,5 @@
 export class Evento {
-    id: number;;
+    id: number;
     fecha: Date;
     ciudadId: number;
     nombre: string;
@@ -8,6 +8,6 @@ export class Evento {
     longitud: number;
     imagenUrl: string;
     situacion: number;
-    usuarioIdAdoptador:number;
+    usuarioIdAdoptador: number;
     activo: number;
 }
