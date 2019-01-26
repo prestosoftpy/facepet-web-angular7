@@ -21,14 +21,14 @@ export class EventosListComponent implements OnInit {
     this.eventoService.getEventos()
     .subscribe(result => this.eventos = result);
   }
-  
+
   adoptar(id) {
     if (window.confirm('Desea adoptar esta mascota?')) {
-      let situacion = 1;
-      let usuarioIdAdoptador = 1;
+      const situacion = 1;
+      const usuarioIdAdoptador = 1;
       this.update({id, situacion, usuarioIdAdoptador} as Evento);
     }
-  };
+  }
 
   add(nombre: string): void {
     nombre = nombre.trim();
@@ -41,7 +41,7 @@ export class EventosListComponent implements OnInit {
 
   update(evento: Evento): void {
     this.eventoService.updateEvento(evento).subscribe(result => {
-      alert("Gracias por adoptar!");
+      alert('Gracias por adoptar!');
       this.getEventos();
     });
   }

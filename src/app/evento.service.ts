@@ -83,7 +83,7 @@ export class EventoService {
 
   /** PUT: update the evento on the server */
   updateEvento (evento: Evento): Observable<any> {
-    return this.http.put(this.eventosUrl + "/" + evento.id, evento, httpOptions).pipe(
+    return this.http.put(this.eventosUrl, evento, httpOptions).pipe(
       tap(_ => this.log(`updated evento id=${evento.id}`)),
       catchError(this.handleError<any>('updateEvento'))
     );
