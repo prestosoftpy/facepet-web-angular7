@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
+// import { CloudinaryModule, CloudinaryConfiguration, provideCloudinary } from '@cloudinary/angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,7 +13,6 @@ import { CiudadesComponent } from './ciudades/ciudades.component';
 import { EventosListComponent } from './eventos-list/eventos-list.component';
 import { EventosFormComponent } from './eventos-form/eventos-form.component';
 import { FooterComponent } from './components/footer/footer.component';
-
 
 @NgModule({
   declarations: [
@@ -31,8 +30,9 @@ import { FooterComponent } from './components/footer/footer.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    // CloudinaryModule
   ],
-  providers: [],
+  // providers: [provideCloudinary(require('cloudinary-core'), { cloud_name: 'facepet-upload' } as CloudinaryConfiguration)],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
