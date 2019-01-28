@@ -11,7 +11,7 @@ import { CiudadService } from '../ciudad.service';
 })
 export class CiudadFormComponent implements OnInit {
 
-  @Input() ciudad: Ciudad[];
+  ciudad: Ciudad;
 
   constructor(private ciudadService: CiudadService) { }
 
