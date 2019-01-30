@@ -1,7 +1,6 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { Ciudad } from '../../modelos/ciudad';
 import { CiudadService } from '../../servicios/ciudad.service';
-import { CuidadesService } from '../../cuidad.service';
 
 @Component({
   selector: 'app-ciudad-form',
@@ -18,19 +17,20 @@ export class CiudadFormComponent implements OnInit {
     imagenUrl: ''
   };
 
-  constructor(private CuidadService: CiudadService) { }
+  constructor(private ciudadService: CiudadService) { }
 
   ngOnInit() {
   }
 
-  GuardarNuevaCiudad() {
+  add() {
     delete this.ciudad.id;
-  this.CuidadService.saveCiudad(this.ciudad)
- .subscribe(
-   res => {
-     console.log(res);
-   },
-   err => console.error(err)
- );
+    this.ciudadService.saveCiudad(this.ciudad)
+      .subscribe(
+        result => {
+          console.log(result);
+          alert("Registro guardado con éxito!");
+        },
+        error => console.error(error)
+      );
   }
 }
