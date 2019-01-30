@@ -4,8 +4,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { Usuario } from './usuario';
-import { MessageService } from './message.service';
+import { Usuario } from '../usuario';
+import { MessageService } from '../message.service';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -20,7 +20,7 @@ export class UsuarioService {
     private http: HttpClient,
     private messageService: MessageService) { }
 
-  /** GET usuarios from the server 
+  /** GET usuarios from the server
   getUsuarios (): Observable<Usuario[]> {
     return this.http.get<Usuario[]>(this.usuariosUrl)
       .pipe(
