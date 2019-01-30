@@ -4,8 +4,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { Evento } from './evento';
-import { MessageService } from './message.service';
+import { Evento } from '../evento';
+import { MessageService } from '../message.service';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -65,6 +65,7 @@ export class EventoService {
   /** POST: add a new hero to the server */
   addEvento (evento: Evento): Observable<Evento> {
     return this.http.post<Evento>(this.eventosUrl, evento, httpOptions).pipe(
+      // tslint:disable-next-line:no-shadowed-variable
       tap((evento: Evento) => this.log(`added evento w/ id=${evento.id}`)),
       catchError(this.handleError<Evento>('addEvento'))
     );

@@ -5,14 +5,14 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { HomeComponent } from './home/home.component';
-import { UsuariosComponent } from './usuarios-form/usuarios.component';
-import { UsuariosListComponent } from './usuarios-list/usuarios-list.component';
-import { CiudadesComponent } from './ciudades/ciudades.component';
-import { EventosListComponent } from './eventos-list/eventos-list.component';
-import { EventosFormComponent } from './eventos-form/eventos-form.component';
-import { CiudadFormComponent } from './ciudad-form/ciudad-form.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { HomeComponent } from './components/home/home.component';
+import { UsuariosComponent } from './components/usuarios-form/usuarios.component';
+import { UsuariosListComponent } from './components/usuarios-list/usuarios-list.component';
+import { CiudadesComponent } from './components/ciudades/ciudades.component';
+import { EventosListComponent } from './components/eventos-list/eventos-list.component';
+import { EventosFormComponent } from './components/eventos-form/eventos-form.component';
+import { CiudadFormComponent } from './components/ciudad-form/ciudad-form.component';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
 
