@@ -1,4 +1,6 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
+import { Router } from "@angular/router";
+
 import { Ciudad } from '../../modelos/ciudad';
 import { CiudadService } from '../../servicios/ciudad.service';
 
@@ -14,13 +16,13 @@ export class CiudadFormComponent implements OnInit {
   ciudad: Ciudad = {
     id: 0,
     nombre: '',
-    imagenUrl: ''
+    imagenUrl: '',
+    activo: null
   };
 
-  constructor(private ciudadService: CiudadService) { }
+  constructor(private ciudadService: CiudadService, private router: Router) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   add() {
     delete this.ciudad.id;
@@ -29,8 +31,11 @@ export class CiudadFormComponent implements OnInit {
         result => {
           console.log(result);
           alert("Registro guardado con éxito!");
+          this.router.navigate(['ciudades']);
         },
-        error => console.error(error)
+        error => {
+          console.error(error);
+        }
       );
   }
 }

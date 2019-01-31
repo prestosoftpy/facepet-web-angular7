@@ -12,13 +12,11 @@ export class CiudadesComponent implements OnInit {
   constructor(private ciudadService: CiudadService) { }
 
   ngOnInit() {
-this.ciudadService.getCiudades().subscribe(
-  res => {
-    this.ciudades = res;
-  },
-  err => console.error(err)
-);
+    this.ciudadService.getCiudades().subscribe(
+      res => {
+        this.ciudades = res;
+      },
+      err => console.error(err)
+    );
   }
-
-
 }
