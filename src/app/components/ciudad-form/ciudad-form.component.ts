@@ -1,6 +1,7 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router } from "@angular/router";
 import { CloudinaryOptions, CloudinaryUploader } from 'ng2-cloudinary';
+import { ToastrService } from 'ngx-toastr';
 
 import { Ciudad } from '../../modelos/ciudad';
 import { CiudadService } from '../../servicios/ciudad.service';
@@ -14,10 +15,12 @@ export class CiudadFormComponent implements OnInit {
 
   // @HostBinding('class') classes = 'row';
 
+  imagenUrlDefault = 'https://pbs.twimg.com/profile_images/706996453894447106/iUzEkqtp_400x400.jpg';
+
   ciudad: Ciudad = {
     id: 0,
     nombre: '',
-    imagenUrl: '',
+    imagenUrl: this.imagenUrlDefault,
     activo: null
   };
 
@@ -27,7 +30,7 @@ export class CiudadFormComponent implements OnInit {
 
   loading: any;
 
-  constructor(private ciudadService: CiudadService, private router: Router) { }
+  constructor(private ciudadService: CiudadService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.uploader.onAfterAddingFile = f => {
@@ -43,7 +46,7 @@ export class CiudadFormComponent implements OnInit {
       .subscribe(
         result => {
           console.log(result);
-          alert("Registro guardado con éxito!");
+          this.toastr.success("Registro guardado con éxito2", 'Nueva ciudad');
           this.router.navigate(['ciudades']);
         },
         error => {
@@ -53,16 +56,30 @@ export class CiudadFormComponent implements OnInit {
   }
 
   save() {
-    this.loading = true;
-    this.uploader.uploadAll();
-    this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any): any => {
-      let res: any = JSON.parse(response);
-      console.log(res);
-      this.ciudad.imagenUrl = res.url;
-      this.add();
+    if (this.validForm()) {
+      if (this.ciudad.imagenUrl == this.imagenUrlDefault) {
+        this.add();
+      } else {
+        this.loading = true;
+        this.uploader.uploadAll();
+        this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any): any => {
+          let res: any = JSON.parse(response);
+          console.log(res);
+          this.ciudad.imagenUrl = res.url;
+          this.add();
+        }
+        this.uploader.onErrorItem = function (fileItem, response, status, headers) {
+          console.info('onErrorItem', fileItem, response, status, headers);
+        };
+      }
     }
-    this.uploader.onErrorItem = function (fileItem, response, status, headers) {
-      console.info('onErrorItem', fileItem, response, status, headers);
-    };
+  }
+
+  validForm(): boolean {
+    if (this.ciudad.nombre == '') {
+      alert("Complete el nombre");
+      return false;
+    }
+    return true;
   }
 }
