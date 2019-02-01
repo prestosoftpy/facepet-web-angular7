@@ -29,7 +29,13 @@ export class CiudadFormComponent implements OnInit {
 
   constructor(private ciudadService: CiudadService, private router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.uploader.onAfterAddingFile = f => {
+      if (this.uploader.queue.length > 1) {
+        this.uploader.removeFromQueue(this.uploader.queue[0]);
+      }
+    };
+  }
 
   add() {
     // delete this.ciudad.id;
