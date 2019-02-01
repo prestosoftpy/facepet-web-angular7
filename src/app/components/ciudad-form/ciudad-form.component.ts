@@ -10,7 +10,6 @@ import { CuidadesService } from '../../cuidad.service';
 })
 export class CiudadFormComponent implements OnInit {
 
-  @HostBinding('class') classes = 'row';
 
   ciudad: Ciudad = {
     id: 0,
