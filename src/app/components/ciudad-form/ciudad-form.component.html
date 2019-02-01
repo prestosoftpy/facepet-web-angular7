@@ -1,17 +1,30 @@
 <br>
 <div>
-<h1>Agregar Nuevas Ciudades</h1>
-<form>
-    <div class="form-group">
-      <label for="formGroupExampleInput">Nombre de Ciudades</label>
-      <input type="text"name="nombre" [(ngModel)]="ciudad.nombre" class="form-control" id="formGroupExampleInput" placeholder="ingrese nombre">
-    </div>
-    <div class="form-group">
-      <label for="formGroupExampleInput2">Imagen</label>
-      <input type="url" name="imagenUrl" [(ngModel)]="ciudad.imagenUrl"  class="form-control" id="formGroupExampleInput2" placeholder="ingresar imagen">
-    </div>
-    <button type="submit" class="btn btn-primary" (click)="add()">
-        Guardar
-    </button>
+  <h1>Agregar Nuevas Ciudades</h1>
+  <form>
+      <div class="row">
+        <div class="col-md-6 form-group input">
+          <label for="formGroupExampleInput">Nombre</label>
+          <input type="text" name="nombre" [(ngModel)]="ciudad.nombre" class="form-control" id="formGroupExampleInput"
+            placeholder="Ingrese el nombre">
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-md-6">
+              <label for="formGroupExampleInput2">Imagen</label>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 form-group">
+          <!-- <input type="url" name="imagenUrl" [(ngModel)]="ciudad.imagenUrl" disabled="false"  class="form-control" id="formGroupExampleInput2" placeholder="Url de la imagen"> -->
+          <input type="file" ng2FileSelect [uploader]="uploader" accept="image/*;capture=camera">
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-md-6 form-group">
+            <button type="submit" class="btn btn-primary" (click)="save()">
+              Guardar
+            </button>
+          </div>
+        </div>
   </form>
-</div>

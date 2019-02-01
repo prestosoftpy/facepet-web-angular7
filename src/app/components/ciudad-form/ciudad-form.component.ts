@@ -1,5 +1,6 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router } from "@angular/router";
+import { CloudinaryOptions, CloudinaryUploader } from 'ng2-cloudinary';
 
 import { Ciudad } from '../../modelos/ciudad';
 import { CiudadService } from '../../servicios/ciudad.service';
@@ -11,7 +12,7 @@ import { CiudadService } from '../../servicios/ciudad.service';
 })
 export class CiudadFormComponent implements OnInit {
 
-  @HostBinding('class') classes = 'row';
+  // @HostBinding('class') classes = 'row';
 
   ciudad: Ciudad = {
     id: 0,
@@ -20,12 +21,18 @@ export class CiudadFormComponent implements OnInit {
     activo: null
   };
 
+  uploader: CloudinaryUploader = new CloudinaryUploader(
+    new CloudinaryOptions({ cloudName: 'facepet-upload', uploadPreset: 'j279gbw1' })
+  );
+
+  loading: any;
+
   constructor(private ciudadService: CiudadService, private router: Router) { }
 
   ngOnInit() {}
 
   add() {
-    delete this.ciudad.id;
+    // delete this.ciudad.id;
     this.ciudadService.saveCiudad(this.ciudad)
       .subscribe(
         result => {
@@ -37,5 +44,19 @@ export class CiudadFormComponent implements OnInit {
           console.error(error);
         }
       );
+  }
+
+  save() {
+    this.loading = true;
+    this.uploader.uploadAll();
+    this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any): any => {
+      let res: any = JSON.parse(response);
+      console.log(res);
+      this.ciudad.imagenUrl = res.url;
+      this.add();
+    }
+    this.uploader.onErrorItem = function (fileItem, response, status, headers) {
+      console.info('onErrorItem', fileItem, response, status, headers);
+    };
   }
 }

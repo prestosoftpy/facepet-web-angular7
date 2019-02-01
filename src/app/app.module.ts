@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-// import { CloudinaryModule, CloudinaryConfiguration, provideCloudinary } from '@cloudinary/angular';
+import { Ng2CloudinaryModule } from 'ng2-cloudinary';
+import { FileUploadModule } from 'ng2-file-upload';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,9 +35,9 @@ import { FooterComponent } from './components/footer/footer.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    // CloudinaryModule
+    Ng2CloudinaryModule,
+    FileUploadModule
   ],
-  // providers: [provideCloudinary(require('cloudinary-core'), { cloud_name: 'facepet-upload' } as CloudinaryConfiguration)],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
