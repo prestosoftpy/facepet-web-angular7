@@ -1,5 +1,5 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 import { CloudinaryOptions, CloudinaryUploader } from 'ng2-cloudinary';
 import { ToastrService } from 'ngx-toastr';
 
@@ -46,7 +46,7 @@ export class CiudadFormComponent implements OnInit {
       .subscribe(
         result => {
           console.log(result);
-          this.toastr.success("Registro guardado con éxito2", 'Nueva ciudad');
+          this.toastr.success('Registro guardado con éxito', 'Nueva ciudad');
           this.router.navigate(['ciudades']);
         },
         error => {
@@ -57,13 +57,13 @@ export class CiudadFormComponent implements OnInit {
 
   save() {
     if (this.validForm()) {
-      if (this.ciudad.imagenUrl == this.imagenUrlDefault) {
+      if (this.ciudad.imagenUrl === this.imagenUrlDefault) {
         this.add();
       } else {
         this.loading = true;
         this.uploader.uploadAll();
         this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any): any => {
-          let res: any = JSON.parse(response);
+          const res: any = JSON.parse(response);
           console.log(res);
           this.ciudad.imagenUrl = res.url;
           this.add();
@@ -76,8 +76,8 @@ export class CiudadFormComponent implements OnInit {
   }
 
   validForm(): boolean {
-    if (this.ciudad.nombre == '') {
-      alert("Complete el nombre");
+    if (this.ciudad.nombre === '') {
+      alert('Complete el nombre');
       return false;
     }
     return true;

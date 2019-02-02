@@ -1,22 +1,47 @@
 <br>
 
 <div class="row">
-        <div class="col-sm-6">
-                <div class="card">
-                  <div class="card-body">
-                          <img src="/assets/img/perroico.jpg" class="card-img-top" alt="">
-                  </div>
-                </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <img src="/assets/img/perroico.jpg" class="card-img-top" alt="">
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div id="card">
+      <div class="card-body">
+        <h1 class="card-title">Facepet Web</h1>
+        <p class="card-text">Esta es una aplicacion para encontrar mascotas.</p>
+        <hr class="my-4">
+        <p>Todavia no tienes cuenta?</p>
+        <a href="#" class="btn btn-primary">Registrate</a>
+      </div>
+    </div>
+    <div id=card>
+      <div class="container login-container">
+        <div class="row">
+          <div class="col-md-6 login-form-2">
+            <h3>Log in</h3>
+            <form>
+              <div class="form-group">
+                <input type="text" class="form-control" [(ngModel)]="usuario.correo" name="email" placeholder="Email "
+                  value="" />
               </div>
-    <div class="col-sm-6">
-      <div id="card">
-        <div class="card-body">
-          <h1 class="card-title">Facepet Web</h1>
-          <p class="card-text">Esta es una aplicacion para encontrar mascotas.</p>
-          <hr class="my-4">
-          <p>Todavia no tienes cuenta?</p>
-          <a href="#" class="btn btn-primary">Registrate</a>
+              <div class="form-group">
+                <input type="password" class="form-control" [(ngModel)]="usuario.clave" name="password" placeholder="Constraseña "
+                  value="" />
+              </div>
+              <div class="form-group">
+                <input type="submit" class="btnSubmit" (click)= "consultar()" value="Entrar" />
+              </div>
+              <div class="form-group">
+                <a href="#" class="ForgetPwd" value="Login">Olvidaste la Constraseña?</a>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
