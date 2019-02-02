@@ -1,7 +1,9 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
+import { Router } from '@angular/router';
+import { CloudinaryOptions, CloudinaryUploader } from 'ng2-cloudinary';
+
 import { Ciudad } from '../../modelos/ciudad';
 import { CiudadService } from '../../servicios/ciudad.service';
-import { CuidadesService } from '../../cuidad.service';
 
 @Component({
   selector: 'app-ciudad-form',
@@ -10,26 +12,58 @@ import { CuidadesService } from '../../cuidad.service';
 })
 export class CiudadFormComponent implements OnInit {
 
+  // @HostBinding('class') classes = 'row';
 
   ciudad: Ciudad = {
     id: 0,
     nombre: '',
-    imagenUrl: ''
+    imagenUrl: '',
+    activo: null
   };
 
-  constructor(private CuidadService: CiudadService) { }
+  uploader: CloudinaryUploader = new CloudinaryUploader(
+    new CloudinaryOptions({ cloudName: 'facepet-upload', uploadPreset: 'j279gbw1' })
+  );
+
+  loading: any;
+
+  constructor(private ciudadService: CiudadService, private router: Router) { }
 
   ngOnInit() {
+    this.uploader.onAfterAddingFile = f => {
+      if (this.uploader.queue.length > 1) {
+        this.uploader.removeFromQueue(this.uploader.queue[0]);
+      }
+    };
   }
 
-  GuardarNuevaCiudad() {
-    delete this.ciudad.id;
-  this.CuidadService.saveCiudad(this.ciudad)
- .subscribe(
-   res => {
-     console.log(res);
-   },
-   err => console.error(err)
- );
+  add() {
+    // delete this.ciudad.id;
+    this.ciudadService.saveCiudad(this.ciudad)
+      .subscribe(
+        result => {
+          console.log(result);
+          alert('Registro guardado con éxito!');
+          this.router.navigate(['ciudades']);
+        },
+        error => {
+          console.error(error);
+        }
+      );
+  }
+
+  save() {
+    this.loading = true;
+    this.uploader.uploadAll();
+    this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any): any => {
+      const res: any = JSON.parse(response);
+      console.log(res);
+      this.ciudad.imagenUrl = res.url;
+      this.add();
+    };
+    this.uploader.onErrorItem = function (fileItem, response, status, headers) {
+      // tslint:disable-next-line:no-console
+      console.info('onErrorItem', fileItem, response, status, headers);
+    };
   }
 }
