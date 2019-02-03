@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'ciudades', component: CiudadesComponent},
   { path: 'eventos', component: EventosListComponent },
   { path: 'ciudad-form', component: CiudadFormComponent },
+  { path: 'ciudades/edit/:id', component: CiudadFormComponent}
 ];
 
 @NgModule({
