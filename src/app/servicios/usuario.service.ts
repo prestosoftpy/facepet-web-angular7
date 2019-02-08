@@ -15,6 +15,7 @@ const httpOptions = {
 export class UsuarioService {
 
   private usuariosUrl = 'https://facepet-api.herokuapp.com/usuarios';  // URL to web api
+  private usuariosUrlLogin = 'https://facepet-api.herokuapp.com/login';
 
   constructor(
     private http: HttpClient,
@@ -121,4 +122,15 @@ export class UsuarioService {
   private log(message: string) {
     this.messageService.add(`UsuarioService: ${message}`);
   }
+
+
+  getLogIn(usuario: Usuario): Observable<Usuario> {
+    return this.http.post<Usuario>(this.usuariosUrlLogin, usuario, httpOptions).pipe(
+      // tslint:disable-next-line:no-shadowed-variable
+      tap((usuario: Usuario) => this.log(`Log in `)),
+      catchError(this.handleError<Usuario>('get Log in'))
+    );
+  }
+
+
 }

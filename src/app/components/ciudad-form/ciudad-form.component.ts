@@ -13,9 +13,7 @@ import { constructDependencies } from '@angular/core/src/di/reflective_provider'
 })
 export class CiudadFormComponent implements OnInit {
 
-  // @HostBinding('class') classes = 'row';
-
-  imagenUrlDefault = 'https://pbs.twimg.com/profile_images/706996453894447106/iUzEkqtp_400x400.jpg';
+  imagenUrlDefault = 'https://myaco.lemans.org/GED/content/4805C9CE-ECF4-4232-AEF4-3580948695DC.jpg';
 
   ciudad: any; Ciudad = {
     id: 0,
@@ -31,6 +29,7 @@ export class CiudadFormComponent implements OnInit {
 
   loading: any;
   ActivedRoute: any;
+  sw: boolean;
 
   constructor(private ciudadService: CiudadService, private activedRoute: ActivatedRoute, private router: Router, private toastr: ToastrService) { }
 
@@ -48,19 +47,33 @@ export class CiudadFormComponent implements OnInit {
     );
      }
     this.uploader.onAfterAddingFile = () => {
+    this.uploader.onAfterAddingFile = file => {
       if (this.uploader.queue.length > 1) {
         this.uploader.removeFromQueue(this.uploader.queue[0]);
       }
+      this.setPreview(file);
+      this.sw = true;
     };
+
+  };
+
+  public setPreview(file) {
+    file.withCredentials = false;
+    let fr = null;
+    fr = new FileReader();
+    fr.onload = () => {
+      this.ciudad.imagenUrl = fr.result;
+    };
+    fr.readAsDataURL(file._file);
+
   }
 
   add() {
-    // delete this.ciudad.id;
     this.ciudadService.saveCiudad(this.ciudad)
       .subscribe(
         result => {
-          console.log(result);
-          this.toastr.success('Registro guardado con éxito2', 'Nueva ciudad');
+          console.log('ciudad', result);
+          this.toastr.success('Registro guardado con éxito', 'Creación de ciudad');
           this.router.navigate(['ciudades']);
         },
         error => {
@@ -71,30 +84,29 @@ export class CiudadFormComponent implements OnInit {
 
   save() {
     if (this.validForm()) {
-      if (this.ciudad.imagenUrl === this.imagenUrlDefault) {
-        this.add();
-      } else {
         this.loading = true;
         this.uploader.uploadAll();
-        this.uploader.onSuccessItem = (item: any, response: string): any => {
-          const res: any = JSON.parse(response);
-          console.log(res);
-          this.router.navigate(['/ciudades']);
-          this.ciudad.imagenUrl = res.url;
+        this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any): any => {
+          const result: any = JSON.parse(response);
+          console.log(result);
+          this.ciudad.imagenUrl = result.url;
           this.add();
         };
         this.uploader.onErrorItem = function (fileItem, response, status, headers) {
           // tslint:disable-next-line:no-console
           console.info('onErrorItem', fileItem, response, status, headers);
         };
-      }
     }
   }
 
 
   validForm(): boolean {
     if (this.ciudad.nombre === '') {
-      alert('Complete el nombre');
+      this.toastr.error('Complete el nombre');
+      return false;
+    }
+    if (this.sw === false) {
+      this.toastr.error('Cargue una imagen válida!');
       return false;
     }
     return true;
