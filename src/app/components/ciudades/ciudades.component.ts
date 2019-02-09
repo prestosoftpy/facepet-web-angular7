@@ -29,7 +29,7 @@ export class CiudadesComponent implements OnInit {
     );
   }
 
-  borrarCiudad(id: string) {
+  borrarCiudad(id: number) {
     if (window.confirm('Desea borrar esta ciudad?')) {
     this.ciudadService.deleteCiudad(id).subscribe(
       res => {

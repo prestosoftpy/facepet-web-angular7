@@ -37,7 +37,7 @@ export class CiudadService {
     return this.http.put(`${this.API_URI}/ciudades/${id}`, updateCiudad);
   }
 
-  deleteCiudad(id: string) {
+  deleteCiudad(id: number) {
     return this.http.delete(`${this.API_URI}/ciudades/${id}`);
   }
 }

@@ -22,7 +22,6 @@ export class CiudadFormComponent implements OnInit {
     activo: null
   };
 
-  edit: boolean;
   uploader: CloudinaryUploader = new CloudinaryUploader(
     new CloudinaryOptions({ cloudName: 'facepet-upload', uploadPreset: 'j279gbw1' })
   );
@@ -35,28 +34,26 @@ export class CiudadFormComponent implements OnInit {
 
   ngOnInit() {
     const params = this.activedRoute.snapshot.params;
-     if (params.id) {
-    this.ciudadService.getCiudad(params.id)
-    .subscribe(
-      res => {
-        console.log(res);
-        this.ciudad = res;
-        this.edit = true;
-      },
-      err => console.error(err)
-    );
-     }
+    if (params.id) {
+      this.ciudadService.getCiudad(params.id)
+        .subscribe(
+          res => {
+            console.log(res);
+            this.ciudad = res;
+          },
+          err => console.error(err)
+        );
+    }
     this.uploader.onAfterAddingFile = () => {
-    this.uploader.onAfterAddingFile = file => {
-      if (this.uploader.queue.length > 1) {
-        this.uploader.removeFromQueue(this.uploader.queue[0]);
-      }
-      this.setPreview(file);
-      this.sw = true;
+      this.uploader.onAfterAddingFile = file => {
+        if (this.uploader.queue.length > 1) {
+          this.uploader.removeFromQueue(this.uploader.queue[0]);
+        }
+        this.setPreview(file);
+        this.sw = true;
+      };
     };
-
-  };
-}
+  }
 
   public setPreview(file) {
     file.withCredentials = false;
@@ -91,7 +88,12 @@ export class CiudadFormComponent implements OnInit {
           const result: any = JSON.parse(response);
           console.log(result);
           this.ciudad.imagenUrl = result.url;
-          this.add();
+          const params = this.activedRoute.snapshot.params;
+          if (params.id) {
+            this.updateCiudad();
+          } else {
+            this.add();
+          }
         };
         this.uploader.onErrorItem = function (fileItem, response, status, headers) {
           // tslint:disable-next-line:no-console
