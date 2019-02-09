@@ -18,6 +18,7 @@ const httpOptions = {
 })
 export class CiudadService {
   API_URI = 'https://facepet-api.herokuapp.com';
+  selectedCiudad: Ciudad;
   constructor(private http: HttpClient) { }
 
   getCiudades() {
@@ -32,7 +33,7 @@ export class CiudadService {
     return this.http.post(`${this.API_URI}/ciudades/`, ciudad);
   }
 
-  updateCiudad(id, updateCiudad: Ciudad) {
+  updateCiudad(id: string|number, updateCiudad: Ciudad) {
     return this.http.put(`${this.API_URI}/ciudades/${id}`, updateCiudad);
   }
 

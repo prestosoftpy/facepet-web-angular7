@@ -24,6 +24,7 @@
        <th>Nombre</th>
        <th>Imagen</th>
        <th>Estado</th>
+       <th>Acciones</th>
 
      </tr>
 
@@ -35,8 +36,20 @@
        <td>{{ciudad.id}}</td>
        <td>{{ciudad.nombre}}</td>
        <td><img src={{ciudad.imagenUrl}} class="img-thumbnail" width="40px"></td>
-       <td>{{ciudad.activo}}</td>
+       <td> {{ciudad.activo == 0 ? "Desactivado": "Activado" }}
+       </td>
+       <td>
 
+          <div class="btn-group">
+
+              <button [routerLink]="['/ciudades/edit', ciudad.id]" routerLinkActive="router-link-active"  class="btn btn-warning" ><i class="fa fa-pencil"></i></button>
+         
+
+              <button class="btn btn-danger" ng-really-message="Are you sure?" (click)="borrarCiudad(ciudad.id)" ><i class="fa fa-times"></i></button>
+
+          </div>
+
+      </td>
      </tr>
 
 
@@ -44,7 +57,7 @@
 
  </table>
 
-</div>
-<div class='flotante'>
-  <button class="btn btn-success" routerLink="/ciudad-form"> <i class="fa fa-plus"></i></button>
+<div *ngIf="(ciudades  ).length === 0"
+ class="alert alert-info" role="alert">
+ <strong>No hay</strong> registros que mostrar
 </div>
