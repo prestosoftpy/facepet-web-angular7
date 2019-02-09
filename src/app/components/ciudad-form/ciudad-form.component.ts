@@ -15,7 +15,7 @@ export class CiudadFormComponent implements OnInit {
 
   imagenUrlDefault = 'https://myaco.lemans.org/GED/content/4805C9CE-ECF4-4232-AEF4-3580948695DC.jpg';
 
-  ciudad: any; Ciudad = {
+  ciudad: any = {
     id: 0,
     nombre: '',
     imagenUrl: this.imagenUrlDefault,
@@ -28,7 +28,7 @@ export class CiudadFormComponent implements OnInit {
 
   loading: any;
   ActivedRoute: any;
-  sw: boolean;
+  sw: boolean = false;
 
   constructor(private ciudadService: CiudadService, private activedRoute: ActivatedRoute, private router: Router, private toastr: ToastrService) { }
 
@@ -44,14 +44,12 @@ export class CiudadFormComponent implements OnInit {
           err => console.error(err)
         );
     }
-    this.uploader.onAfterAddingFile = () => {
-      this.uploader.onAfterAddingFile = file => {
+    this.uploader.onAfterAddingFile = file => {
         if (this.uploader.queue.length > 1) {
           this.uploader.removeFromQueue(this.uploader.queue[0]);
         }
         this.setPreview(file);
         this.sw = true;
-      };
     };
   }
 
@@ -63,7 +61,6 @@ export class CiudadFormComponent implements OnInit {
       this.ciudad.imagenUrl = fr.result;
     };
     fr.readAsDataURL(file._file);
-
   }
 
   add() {
