@@ -1,6 +1,6 @@
-export class Ciudad{
+export class Ciudad {
     id: number;
     nombre: string;
-    imagen: string;
+    imagenUrl: string;
     activo: number;
 }

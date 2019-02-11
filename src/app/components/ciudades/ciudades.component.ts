@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-import { Ciudad } from '../ciudad';
-import { CiudadService } from '../ciudad.service';
+import { CiudadService } from '../../servicios/ciudad.service';
 
 @Component({
   selector: 'app-ciudades',
@@ -10,17 +8,15 @@ import { CiudadService } from '../ciudad.service';
 })
 export class CiudadesComponent implements OnInit {
 
-  ciudades: Ciudad[];
-
+  ciudades: any = [];
   constructor(private ciudadService: CiudadService) { }
 
   ngOnInit() {
-    this.getCiudades();
+    this.ciudadService.getCiudades().subscribe(
+      res => {
+        this.ciudades = res;
+      },
+      err => console.error(err)
+    );
   }
-
-  getCiudades(): void {
-    this.ciudadService.getCiudades()
-    .subscribe(ciudades => this.ciudades = ciudades);
-  }
-
 }

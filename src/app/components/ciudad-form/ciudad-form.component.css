@@ -1,0 +1,20 @@
+#gridCheck {
+  position: absolute;
+  margin-top: -21px;
+}
+
+.form-check-label {
+  position: absolute;
+  margin-top: -28px;
+}
+
+#registro {
+
+  position: fixed;
+    margin-top: 6px;
+
+}
+
+.input {
+    margin-top: 6px;
+}

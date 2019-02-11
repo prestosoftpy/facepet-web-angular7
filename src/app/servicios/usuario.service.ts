@@ -4,8 +4,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { Usuario } from './usuario';
-import { MessageService } from './message.service';
+import { Usuario } from '../usuario';
+import { MessageService } from '../message.service';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -15,12 +15,13 @@ const httpOptions = {
 export class UsuarioService {
 
   private usuariosUrl = 'https://facepet-api.herokuapp.com/usuarios';  // URL to web api
+  private usuariosUrlLogin = 'https://facepet-api.herokuapp.com/login';
 
   constructor(
     private http: HttpClient,
     private messageService: MessageService) { }
 
-  /** GET usuarios from the server 
+  /** GET usuarios from the server
   getUsuarios (): Observable<Usuario[]> {
     return this.http.get<Usuario[]>(this.usuariosUrl)
       .pipe(
@@ -121,4 +122,15 @@ export class UsuarioService {
   private log(message: string) {
     this.messageService.add(`UsuarioService: ${message}`);
   }
+
+
+  getLogIn(usuario: Usuario): Observable<Usuario> {
+    return this.http.post<Usuario>(this.usuariosUrlLogin, usuario, httpOptions).pipe(
+      // tslint:disable-next-line:no-shadowed-variable
+      tap((usuario: Usuario) => this.log(`Log in `)),
+      catchError(this.handleError<Usuario>('get Log in'))
+    );
+  }
+
+
 }

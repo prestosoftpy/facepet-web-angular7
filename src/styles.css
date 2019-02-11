@@ -1,16 +1,26 @@
-#card{
-    margin-left: 10px; 
-    background-size: cover;
-    background-repeat: no-repeat;
-    color:black;
-    text-shadow: black 0.3em 0.3em 0.3em;
-    width: 500px;
-    height: 400px;  /*Este será el ancho que tendrá tu columna*/
-    background-color:burlywood;
-    background-image: url(perroico.jpg);  /*Aquí pon el color del fondo que quieras para este lateral*/
-    float:left; /*Aqui determinas de lado quieres quede esta "columna" */
+.body {
+    background-color: firebrick;
 }
 
+
+#card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #e9ecef;
+    background-clip: border-box;
+    border: 0px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+
+    
+}
+.card {
+    border: 0px solid rgba(0,0,0,.125); 
+}
 hr {
     border-color: white;
 }
@@ -81,4 +91,3 @@ hr {
         top: 90%;
         width: 60px;
 }
-
