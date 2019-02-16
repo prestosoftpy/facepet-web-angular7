@@ -2,32 +2,33 @@
 <div>
   <h1>Registro de Ciudades</h1>
   <form>
-      <div class="row">
-        <div class="col-md-6 form-group input">
-          <label for="formGroupExampleInput">Nombre</label>
-          <input type="text" name="nombre" [(ngModel)]="ciudad.nombre" class="form-control" id="formGroupExampleInput"
-            placeholder="Ingrese el nombre">
-        </div>
+    <div class="row">
+      <div class="col-md-6 form-group input">
+        <label for="formGroupExampleInput">Nombre</label>
+        <input type="text" name="nombre" [(ngModel)]="ciudad.nombre" class="form-control" id="formGroupExampleInput"
+          placeholder="Ingrese el nombre">
       </div>
-      <div class="row">
-          <div class="col-md-6">
-              <label for="formGroupExampleInput2">Imagen</label>
-          </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <label for="formGroupExampleInput2">Imagen</label>
       </div>
-      <div class="row">
-          <div class="col-md-6">
-              <img src={{ciudad.imagenUrl}} class="img-thumbnail" width="200px" height="200px">
-          </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <img src={{ciudad.imagenUrl}} class="img-thumbnail" width="200px" height="200px">
       </div>
-      <div class="row">
-        <div class="col-md-6 form-group">
-          <input type="file" placeholder="seleccionar carpeta" ng2FileSelect [uploader]="uploader" accept="image/*;capture=camera">
-        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <input type="file" placeholder="seleccionar carpeta" ng2FileSelect [uploader]="uploader"
+          accept="image/*;capture=camera">
       </div>
-      <div class="row">
-          <div class="col-md-6 form-group">
-            <button type="submit" class="btn btn-primary" [disabled]="loading" (click)="save()">Guardar</button>
-          </div>
-        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <button type="submit" class="btn btn-primary" [disabled]="loading" (click)="save()">Guardar</button>
+      </div>
+    </div>
   </form>
-<br><br>
+  <br><br>

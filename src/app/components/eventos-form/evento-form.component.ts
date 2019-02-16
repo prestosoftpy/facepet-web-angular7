@@ -1,22 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CloudinaryOptions, CloudinaryUploader } from 'ng2-cloudinary';
+
 import { ToastrService } from 'ngx-toastr';
-import { CiudadService } from '../../servicios/ciudad.service';
+import { EventoService } from '../../servicios/evento.service';
 
 @Component({
-  selector: 'app-ciudad-form',
-  templateUrl: './ciudad-form.component.html',
-  styleUrls: ['./ciudad-form.component.css']
+  selector: 'app-evento-form',
+  templateUrl: './evento-form.component.html',
+  styleUrls: ['./evento-form.component.css']
 })
-export class CiudadFormComponent implements OnInit {
+export class EventoFormComponent implements OnInit {
 
   imagenUrlDefault = 'https://myaco.lemans.org/GED/content/4805C9CE-ECF4-4232-AEF4-3580948695DC.jpg';
 
-  ciudad: any = {
+  evento: any = {
     id: 0,
     nombre: '',
+    descripcion: '',
+    ciudadId: 0,
+    latitud: 0,
+    longitud: 0,
     imagenUrl: this.imagenUrlDefault,
+    usuarioId: 1,
     activo: null
   };
 
@@ -28,15 +34,15 @@ export class CiudadFormComponent implements OnInit {
   ActivedRoute: any;
   sw: boolean = false;
 
-  constructor(private ciudadService: CiudadService, private activedRoute: ActivatedRoute, private router: Router, private toastr: ToastrService) { }
+  constructor(private eventoService: EventoService, private activedRoute: ActivatedRoute, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit() {
     const params = this.activedRoute.snapshot.params;
     if (params.id) {
-      this.ciudadService.getCiudad(params.id)
+      this.eventoService.getEvento(params.id)
         .subscribe(
           res => {
-            this.ciudad = res;
+            this.evento = res;
           },
           err => console.error(err)
         );
@@ -55,17 +61,17 @@ export class CiudadFormComponent implements OnInit {
     let fr = null;
     fr = new FileReader();
     fr.onload = () => {
-      this.ciudad.imagenUrl = fr.result;
+      this.evento.imagenUrl = fr.result;
     };
     fr.readAsDataURL(file._file);
   }
 
   add() {
-    this.ciudadService.saveCiudad(this.ciudad)
+    this.eventoService.addEvento(this.evento)
       .subscribe(
         result => {
-          this.toastr.success('Registro guardado con éxito', 'Creación de ciudad');
-          this.router.navigate(['ciudades']);
+          this.toastr.success('Registro guardado con éxito', 'Creación de evento');
+          this.router.navigate(['eventos']);
         },
         error => {
           console.error(error);
@@ -79,7 +85,7 @@ export class CiudadFormComponent implements OnInit {
       this.uploader.uploadAll();
       this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any): any => {
         const result: any = JSON.parse(response);
-        this.ciudad.imagenUrl = result.url;
+        this.evento.imagenUrl = result.url;
         const params = this.activedRoute.snapshot.params;
         if (params.id) {
           this.update();
@@ -96,8 +102,24 @@ export class CiudadFormComponent implements OnInit {
 
 
   validForm(): boolean {
-    if (this.ciudad.nombre === '') {
+    if (this.evento.nombre === '') {
       this.toastr.error('Complete el nombre');
+      return false;
+    }
+    if (this.evento.descripcion === '') {
+      this.toastr.error('Complete el descripcion');
+      return false;
+    }
+    if (this.evento.ciudadId === 0) {
+      this.toastr.error('Complete la ciudad');
+      return false;
+    }
+    if (this.evento.latitud === 0) {
+      this.toastr.error('Complete la latitud');
+      return false;
+    }
+    if (this.evento.longitud === 0) {
+      this.toastr.error('Complete la longitud');
       return false;
     }
     if (this.sw === false) {
@@ -108,10 +130,10 @@ export class CiudadFormComponent implements OnInit {
   }
 
   update() {
-    this.ciudadService.updateCiudad(this.ciudad.id, this.ciudad)
+    this.eventoService.updateEvento(this.evento.id, this.evento)
       .subscribe(
         res => {
-          this.router.navigate(['/ciudades']);
+          this.router.navigate(['/eventos']);
         },
         err => console.error(err)
       );
