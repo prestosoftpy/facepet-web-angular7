@@ -4,7 +4,7 @@
 
   <div class="box-header with-border right">
   
-    <button class="btn btn-success" routerLink="/ciudad-form" data-toggle="modal" data-target="">
+    <button class="btn btn-success" routerLink="/ciudades-nuevo" data-toggle="modal" data-target="">
     
       
       Agregar ciudad
@@ -42,7 +42,7 @@
 
           <div class="btn-group">
 
-              <button [routerLink]="['/ciudades/edit', ciudad.id]" routerLinkActive="router-link-active"  class="btn btn-warning" ><i class="fa fa-pencil"></i></button>
+              <button [routerLink]="['/ciudades-editar', ciudad.id]" routerLinkActive="router-link-active"  class="btn btn-warning" ><i class="fa fa-pencil"></i></button>
          
 
               <button class="btn btn-danger" ng-really-message="Are you sure?" (click)="borrarCiudad(ciudad.id)" ><i class="fa fa-times"></i></button>

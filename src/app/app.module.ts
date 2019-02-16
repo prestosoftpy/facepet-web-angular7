@@ -14,7 +14,7 @@ import { UsuariosComponent } from './components/usuarios-form/usuarios.component
 import { UsuariosListComponent } from './components/usuarios-list/usuarios-list.component';
 import { CiudadesComponent } from './components/ciudades/ciudades.component';
 import { EventosListComponent } from './components/eventos-list/eventos-list.component';
-import { EventosFormComponent } from './components/eventos-form/eventos-form.component';
+import { EventoFormComponent } from './components/eventos-form/evento-form.component';
 import { CiudadFormComponent } from './components/ciudad-form/ciudad-form.component';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
@@ -28,7 +28,7 @@ import { FooterComponent } from './components/footer/footer.component';
     UsuariosListComponent,
     CiudadesComponent,
     EventosListComponent,
-    EventosFormComponent,
+    EventoFormComponent,
     CiudadFormComponent,
     FooterComponent,
   ],
