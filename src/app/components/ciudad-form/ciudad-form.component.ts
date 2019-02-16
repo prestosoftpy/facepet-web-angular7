@@ -28,7 +28,7 @@ export class CiudadFormComponent implements OnInit {
 
   loading: any;
   ActivedRoute: any;
-  sw: boolean = false;
+  sw = false;
 
   constructor(private ciudadService: CiudadService, private activedRoute: ActivatedRoute, private router: Router, private toastr: ToastrService) { }
 
