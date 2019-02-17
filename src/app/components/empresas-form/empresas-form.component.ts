@@ -2,22 +2,28 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CloudinaryOptions, CloudinaryUploader } from 'ng2-cloudinary';
 import { ToastrService } from 'ngx-toastr';
+import { Ciudad } from '../../modelos/ciudad';
 import { CiudadService } from '../../servicios/ciudad.service';
-
+import { constructDependencies } from '@angular/core/src/di/reflective_provider';
+import { EmpresaService } from 'src/app/servicios/empresa.service';
 @Component({
-  selector: 'app-ciudad-form',
-  templateUrl: './ciudad-form.component.html',
-  styleUrls: ['./ciudad-form.component.css']
+  selector: 'app-empresas-form',
+  templateUrl: './empresas-form.component.html',
+  styleUrls: ['./empresas-form.component.css']
 })
-export class CiudadFormComponent implements OnInit {
+export class EmpresasFormComponent implements OnInit {
 
   imagenUrlDefault = 'https://myaco.lemans.org/GED/content/4805C9CE-ECF4-4232-AEF4-3580948695DC.jpg';
 
-  ciudad: any = {
+  empresa: any = {
     id: 0,
     nombre: '',
-    imagenUrl: this.imagenUrlDefault,
-    activo: null
+    ruc: '',
+    telefono: '',
+    celular: '',
+    direccion: '',
+    imagenUrl: '',
+    horarios: '',
   };
 
   uploader: CloudinaryUploader = new CloudinaryUploader(
@@ -28,15 +34,16 @@ export class CiudadFormComponent implements OnInit {
   ActivedRoute: any;
   sw = false;
 
-  constructor(private ciudadService: CiudadService, private activedRoute: ActivatedRoute, private router: Router, private toastr: ToastrService) { }
+  constructor(private empresaService: EmpresaService, private activedRoute: ActivatedRoute, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit() {
     const params = this.activedRoute.snapshot.params;
     if (params.id) {
-      this.ciudadService.getCiudad(params.id)
+      this.empresaService.getEmpresa(params.id)
         .subscribe(
           res => {
-            this.ciudad = res;
+            console.log(res);
+            this.empresa = res;
           },
           err => console.error(err)
         );
@@ -55,23 +62,36 @@ export class CiudadFormComponent implements OnInit {
     let fr = null;
     fr = new FileReader();
     fr.onload = () => {
-      this.ciudad.imagenUrl = fr.result;
+      this.empresa.imagenUrl = fr.result;
     };
     fr.readAsDataURL(file._file);
   }
 
   add() {
-    this.ciudadService.saveCiudad(this.ciudad)
+    this.empresaService.saveEmpresa(this.empresa)
       .subscribe(
         result => {
-          this.toastr.success('Registro guardado con éxito', 'Creación de ciudad');
-          this.router.navigate(['ciudades']);
+          console.log('empresa', result);
+          this.toastr.success('Registro guardado con éxito', 'Creación de empresa');
+          this.router.navigate(['empresas']);
         },
         error => {
           console.error(error);
         }
       );
   }
+  validForm(): boolean {
+    if (this.empresa.nombre === '') {
+      this.toastr.error('Complete el nombre');
+      return false;
+    }
+    if (this.sw === false) {
+      this.toastr.error('Cargue una imagen válida!');
+      return false;
+    }
+    return true;
+  }
+
 
   save() {
     if (this.validForm()) {
@@ -79,10 +99,11 @@ export class CiudadFormComponent implements OnInit {
       this.uploader.uploadAll();
       this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any): any => {
         const result: any = JSON.parse(response);
-        this.ciudad.imagenUrl = result.url;
+        console.log(result);
+        this.empresa.imagenUrl = result.url;
         const params = this.activedRoute.snapshot.params;
         if (params.id) {
-          this.update();
+          this.updateEmpresa();
         } else {
           this.add();
         }
@@ -94,24 +115,12 @@ export class CiudadFormComponent implements OnInit {
     }
   }
 
-
-  validForm(): boolean {
-    if (this.ciudad.nombre === '') {
-      this.toastr.error('Complete el nombre');
-      return false;
-    }
-    if (this.sw === false) {
-      this.toastr.error('Cargue una imagen válida!');
-      return false;
-    }
-    return true;
-  }
-
-  update() {
-    this.ciudadService.updateCiudad(this.ciudad.id, this.ciudad)
+  updateEmpresa() {
+    this.empresaService.updateEmpresa(this.empresa.id, this.empresa)
       .subscribe(
         res => {
-          this.router.navigate(['/ciudades']);
+          console.log(res);
+          this.router.navigate(['/empresas']);
         },
         err => console.error(err)
       );
