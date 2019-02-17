@@ -1,0 +1,90 @@
+<br>
+<div>
+  <h1>Registro de Empresas</h1>
+  <form>
+
+    <div class="row">
+
+      <div class="col-md-6 form-group input">
+        <label for="formGroupExampleInput">Nombre</label>
+        <input type="text" name="nombre" [(ngModel)]="empresa.nombre" class="form-control" id="formGroupExampleInput"
+          placeholder="Ingrese el nombre">
+      </div>
+
+    </div>
+    <div class="row">
+
+      <div class="col-md-6 form-group input">
+        <label for="formGroupExampleInput">RUC</label>
+        <input type="text" name="ruc" [(ngModel)]="empresa.ruc" class="form-control" id="formGroupExampleInput"
+          placeholder="Ingrese su RUC">
+      </div>
+
+    </div>
+    <div class="row">
+
+      <div class="col-md-6 form-group input">
+        <label for="formGroupExampleInput">Telefono</label>
+        <input type="text" name="telefono" [(ngModel)]="empresa.telefono" class="form-control" id="formGroupExampleInput" 
+        placeholder="Ingrese su numero de telefono">
+      </div>
+
+    </div>
+    <div class="row">
+
+      <div class="col-md-6 form-group input">
+        <label for="formGroupExampleInput">Celular</label>
+        <input type="text" name="celular" [(ngModel)]="empresa.celular" class="form-control" id="formGroupExampleInput"
+          placeholder="Ingrese su numero de celular">
+      </div>
+
+    </div>
+    <div class="row">
+
+      <div class="col-md-6 form-group input">
+        <label for="formGroupExampleInput">Direccion</label>
+        <input type="text" name="Direccion" [(ngModel)]="empresa.direccion" class="form-control" id="formGroupExampleInput"
+        placeholder="Ingrese su Direccion">
+      </div>
+
+    </div>
+    <div class="row">
+
+      <div class="col-md-6 form-group input">
+        <label for="formGroupExampleInput">Horario </label>
+        <input type="text" name="horario" [(ngModel)]="empresa.horarios" class="form-control" id="formGroupExampleInput"
+          placeholder="Ingrese su horario de atencion">
+      </div>
+
+    </div>
+    <div class="row">
+
+      <div class="col-md-6">
+        <label for="formGroupExampleInput2">Imagen</label>
+      </div>
+
+    </div>
+    <div class="row">
+
+      <div class="col-md-6">
+        <img src={{empresa.imagenUrl}} class="img-thumbnail" width="200px" height="200px">
+      </div>
+
+    </div>
+    <div class="row">
+
+      <div class="col-md-6 form-group">
+        <input type="file" placeholder="seleccionar carpeta" ng2FileSelect [uploader]="uploader" accept="image/*;capture=camera">
+      </div>
+
+    </div>
+    <div class="row">
+
+      <div class="col-md-6 form-group">
+        <button type="submit" class="btn btn-primary" [disabled]="loading" (click)="save()">Guardar</button>
+      </div>
+          
+
+    </div>
+  </form>
+  <br><br>

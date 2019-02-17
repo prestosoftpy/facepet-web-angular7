@@ -19,6 +19,8 @@ import { EventoFormComponent } from './components/eventos-form/evento-form.compo
 import { CiudadFormComponent } from './components/ciudad-form/ciudad-form.component';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
+import { EmpresasFormComponent } from './components/empresas-form/empresas-form.component';
+import { EmpresasListComponent } from './components/empresas-list/empresas-list.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { FooterComponent } from './components/footer/footer.component';
     EventoFormComponent,
     CiudadFormComponent,
     FooterComponent,
+    EmpresasFormComponent,
+    EmpresasListComponent,
   ],
   imports: [
     BrowserModule,
