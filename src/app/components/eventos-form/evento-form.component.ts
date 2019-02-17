@@ -1,9 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import {NgbTypeahead} from '@ng-bootstrap/ng-bootstrap';
+import {Observable, Subject, merge} from 'rxjs';
+import {debounceTime, distinctUntilChanged, filter, map} from 'rxjs/operators';
+// import {Observable} from 'rxjs';
+// import {debounceTime, map} from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CloudinaryOptions, CloudinaryUploader } from 'ng2-cloudinary';
 
 import { ToastrService } from 'ngx-toastr';
 import { EventoService } from '../../servicios/evento.service';
+import { CiudadService } from '../../servicios/ciudad.service';
 
 @Component({
   selector: 'app-evento-form',
@@ -18,6 +24,7 @@ export class EventoFormComponent implements OnInit {
     id: 0,
     nombre: '',
     descripcion: '',
+    ciudad: {},
     ciudadId: 0,
     latitud: 0,
     longitud: 0,
@@ -33,8 +40,9 @@ export class EventoFormComponent implements OnInit {
   loading: any;
   ActivedRoute: any;
   sw: boolean = false;
+  ciudades: any = [];
 
-  constructor(private eventoService: EventoService, private activedRoute: ActivatedRoute, private router: Router, private toastr: ToastrService) { }
+  constructor(private eventoService: EventoService, private activedRoute: ActivatedRoute, private router: Router, private toastr: ToastrService, private ciudadService: CiudadService) { }
 
   ngOnInit() {
     const params = this.activedRoute.snapshot.params;
@@ -54,6 +62,16 @@ export class EventoFormComponent implements OnInit {
       this.setPreview(file);
       this.sw = true;
     };
+    this.getCiudades();
+  }
+
+  getCiudades() {
+    this.ciudadService.getCiudades().subscribe(
+      res => {
+        this.ciudades = res;
+      },
+      err => console.error(err)
+    );
   }
 
   public setPreview(file) {
@@ -137,5 +155,36 @@ export class EventoFormComponent implements OnInit {
         },
         err => console.error(err)
       );
+  }
+
+  @ViewChild('instance') instance: NgbTypeahead;
+  focus$ = new Subject<string>();
+  click$ = new Subject<string>();
+
+  search = (text$: Observable<any>) => {
+    const debouncedText$ = text$.pipe(debounceTime(200), distinctUntilChanged());
+    const clicksWithClosedPopup$ = this.click$.pipe(filter(() => !this.instance.isPopupOpen()));
+    const inputFocus$ = this.focus$;
+    return merge(debouncedText$, inputFocus$, clicksWithClosedPopup$).pipe(
+      map(term => {
+        if (term === '') {
+          return this.ciudades;
+        } else {
+          return this.ciudades.filter(v => v.nombre.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10)
+        }
+      })
+    );
+  }
+  // search = (text$: Observable<string>) =>
+  //   text$.pipe(
+  //     debounceTime(200),
+  //     map(term => term === '' ? []
+  //       : this.ciudades.filter(v => v.nombre.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
+  //   )
+
+  formatterCiudad = (item: { nombre: string }) => item.nombre;
+
+  selectedItemCiudad = buscadorCiudad => {
+    this.evento.ciudadId = buscadorCiudad.item.id;
   }
 }

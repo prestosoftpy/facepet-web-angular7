@@ -1,19 +1,18 @@
 <br>
 <div class="card-columns">
   <div *ngFor="let evento of eventos" class="card">
-    <img class="card-img-top" [src]="evento.imagenUrl" alt="Card image cap" class="img-thumb" >
+    <img class="card-img-top" [src]="evento.imagenUrl" alt="Card image cap" class="img-thumb">
     <div class="card-body">
       <h5 class="card-title">{{evento.nombre}}</h5>
       <p class="card-text">{{evento.descripcion}} </p>
       <p class="card-text-rigth"><small class="text-muted">Alzado {{evento.fecha}}</small></p>
-    
-       <div class="text-center">
-          <a class="btn btn-primary" (click)="adoptar(evento.id)" >Adoptar</a>
+      <div class="text-center">
+        <a class="btn btn-primary" (click)="adoptar(evento.id)">Adoptar</a>
       </div>
+    </div>
   </div>
-</div>
-<div class='flotante'>
+  <div class='flotante'>
     <button routerLink="/eventos-nuevo" class="btn btn-success"><i class="fa fa-plus"></i></button>
-</div>
+  </div>
 
 

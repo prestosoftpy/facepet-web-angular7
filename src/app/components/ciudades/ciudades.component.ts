@@ -17,10 +17,10 @@ export class CiudadesComponent implements OnInit {
   constructor(private ciudadService: CiudadService) { }
 
   ngOnInit() {
-    this.getCiudad();
+    this.getCiudades();
   }
 
-  getCiudad() {
+  getCiudades() {
     this.ciudadService.getCiudades().subscribe(
       res => {
         this.ciudades = res;
@@ -33,8 +33,7 @@ export class CiudadesComponent implements OnInit {
     if (window.confirm('Desea borrar esta ciudad?')) {
     this.ciudadService.deleteCiudad(id).subscribe(
       res => {
-        console.log(res);
-        this.getCiudad();
+        this.getCiudades();
       },
       err => console.log(err)
     );
