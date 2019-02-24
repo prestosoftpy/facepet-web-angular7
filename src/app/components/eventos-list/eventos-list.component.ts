@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Evento } from '../../evento';
+import { ToastrService } from 'ngx-toastr';
+
+import { Evento } from '../../modelos/evento';
 import { EventoService } from '../../servicios/evento.service';
 
 @Component({
@@ -11,7 +13,7 @@ export class EventosListComponent implements OnInit {
 
   eventos: Evento[];
 
-  constructor(private eventoService: EventoService) { }
+  constructor(private eventoService: EventoService, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.getEventos();
@@ -26,29 +28,15 @@ export class EventosListComponent implements OnInit {
     if (window.confirm('Desea adoptar esta mascota?')) {
       const situacion = 1;
       const usuarioIdAdoptador = 1;
-      this.update({id, situacion, usuarioIdAdoptador} as Evento);
+      this.update(id, {id, situacion, usuarioIdAdoptador} as Evento);
     }
   }
 
-  add(nombre: string): void {
-    nombre = nombre.trim();
-    if (!nombre) { return; }
-    this.eventoService.addEvento({ nombre } as Evento)
-      .subscribe(hero => {
-        this.eventos.push(hero);
-      });
-  }
-
-  update(evento: Evento): void {
-    this.eventoService.updateEvento(evento).subscribe(result => {
-      alert('Gracias por adoptar!');
+  update(id: number, evento: Evento): void {
+    this.eventoService.updateEvento(id, evento).subscribe(result => {
+      this.toastr.success('Gracias, su solicitud está siendo procesada!', 'Solicitud de adopción');
       this.getEventos();
     });
-  }
-
-  delete(evento: Evento): void {
-    this.eventos = this.eventos.filter(h => h !== evento);
-    this.eventoService.deleteEvento(evento).subscribe();
   }
 
 }

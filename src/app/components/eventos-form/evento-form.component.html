@@ -1,0 +1,66 @@
+<br>
+<div>
+  <h1>Registro de Eventos</h1>
+  <form>
+    <div class="row">
+      <div class="col-md-6 form-group input">
+        <label for="formGroupExampleInput">Nombre</label>
+        <input type="text" name="nombre" [(ngModel)]="evento.nombre" class="form-control" id="formGroupExampleInput"
+          placeholder="Ingrese el nombre">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 form-group input">
+        <label for="formGroupExampleInput">Descripción</label>
+        <input type="text" name="descripcion" [(ngModel)]="evento.descripcion" class="form-control" id="formGroupExampleInput"
+          placeholder="Ingrese la descripción">
+      </div>
+    </div>
+    <div class="row">
+      <ng-template #rt let-r="result" let-t="term">
+        <img [src]="r.imagenUrl" class="mr-1" style="width: 16px">
+        <ngb-highlight [result]="r.nombre" [term]="t"></ngb-highlight>
+      </ng-template>
+      <div class="col-md-6 form-group input">
+        <label for="typeahead-ciudad">Ciudad</label>
+        <input id="typeahead-ciudad" name="ciudad" type="text" class="form-control" [(ngModel)]="evento.ciudad"
+          [ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatterCiudad" (selectItem)="selectedItemCiudad($event)" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 form-group input">
+        <label for="formGroupExampleInput">Latitud</label>
+        <input type="text" name="latitud" [(ngModel)]="evento.latitud" class="form-control" id="formGroupExampleInput"
+          placeholder="Ingrese la latitud">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 form-group input">
+        <label for="formGroupExampleInput">Longitud</label>
+        <input type="text" name="longitud" [(ngModel)]="evento.longitud" class="form-control" id="formGroupExampleInput"
+          placeholder="Ingrese la longitud">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <label for="formGroupExampleInput2">Imagen</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <img src={{evento.imagenUrl}} class="img-thumbnail" width="200px" height="200px">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <input type="file" placeholder="seleccionar carpeta" ng2FileSelect [uploader]="uploader"
+          accept="image/*;capture=camera">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <button type="submit" class="btn btn-primary" [disabled]="loading" (click)="save()">Guardar</button>
+      </div>
+    </div>
+  </form>
+  <br><br>

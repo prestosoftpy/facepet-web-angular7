@@ -5,6 +5,7 @@ import { Ng2CloudinaryModule } from 'ng2-cloudinary';
 import { FileUploadModule } from 'ng2-file-upload';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,10 +15,12 @@ import { UsuariosComponent } from './components/usuarios-form/usuarios.component
 import { UsuariosListComponent } from './components/usuarios-list/usuarios-list.component';
 import { CiudadesComponent } from './components/ciudades/ciudades.component';
 import { EventosListComponent } from './components/eventos-list/eventos-list.component';
-import { EventosFormComponent } from './components/eventos-form/eventos-form.component';
+import { EventoFormComponent } from './components/eventos-form/evento-form.component';
 import { CiudadFormComponent } from './components/ciudad-form/ciudad-form.component';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
+import { EmpresasFormComponent } from './components/empresas-form/empresas-form.component';
+import { EmpresasListComponent } from './components/empresas-list/empresas-list.component';
 
 @NgModule({
   declarations: [
@@ -28,9 +31,11 @@ import { FooterComponent } from './components/footer/footer.component';
     UsuariosListComponent,
     CiudadesComponent,
     EventosListComponent,
-    EventosFormComponent,
+    EventoFormComponent,
     CiudadFormComponent,
     FooterComponent,
+    EmpresasFormComponent,
+    EmpresasListComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +44,8 @@ import { FooterComponent } from './components/footer/footer.component';
     FormsModule,
     Ng2CloudinaryModule,
     FileUploadModule,
-    BrowserAnimationsModule, // required animations module
+    BrowserAnimationsModule,
+    NgbModule,
     ToastrModule.forRoot({
       timeOut: 10000,
       positionClass: 'toast-top-right',

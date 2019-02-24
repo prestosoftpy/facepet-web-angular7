@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CiudadService } from '../../servicios/ciudad.service';
+import { Ciudad } from 'src/app/modelos/ciudad';
+import { CloudinaryOptions, CloudinaryUploader } from 'ng2-cloudinary';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-ciudades',
@@ -9,9 +13,14 @@ import { CiudadService } from '../../servicios/ciudad.service';
 export class CiudadesComponent implements OnInit {
 
   ciudades: any = [];
+  toastr: any;
   constructor(private ciudadService: CiudadService) { }
 
   ngOnInit() {
+    this.getCiudades();
+  }
+
+  getCiudades() {
     this.ciudadService.getCiudades().subscribe(
       res => {
         this.ciudades = res;
@@ -19,4 +28,16 @@ export class CiudadesComponent implements OnInit {
       err => console.error(err)
     );
   }
+
+  borrarCiudad(id: number) {
+    if (window.confirm('Desea borrar esta ciudad?')) {
+    this.ciudadService.deleteCiudad(id).subscribe(
+      res => {
+        this.getCiudades();
+      },
+      err => console.log(err)
+    );
+  }
+}
+
 }

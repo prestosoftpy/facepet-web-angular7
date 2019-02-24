@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { Evento } from '../evento';
+import { Evento } from '../modelos/evento';
 import { MessageService } from '../message.service';
 
 const httpOptions = {
@@ -63,12 +63,15 @@ export class EventoService {
   //////// Save methods //////////
 
   /** POST: add a new hero to the server */
-  addEvento (evento: Evento): Observable<Evento> {
-    return this.http.post<Evento>(this.eventosUrl, evento, httpOptions).pipe(
-      // tslint:disable-next-line:no-shadowed-variable
-      tap((evento: Evento) => this.log(`added evento w/ id=${evento.id}`)),
-      catchError(this.handleError<Evento>('addEvento'))
-    );
+  // addEvento (evento: Evento): Observable<Evento> {
+  //   return this.http.post<Evento>(this.eventosUrl, evento, httpOptions).pipe(
+  //     // tslint:disable-next-line:no-shadowed-variable
+  //     tap((evento: Evento) => this.log(`added evento w/ id=${evento.id}`)),
+  //     catchError(this.handleError<Evento>('addEvento'))
+  //   );
+  // }
+  addEvento(evento: Evento) {
+    return this.http.post(`${this.eventosUrl}`, evento);
   }
 
   /** DELETE: delete the hero from the server */
@@ -83,11 +86,14 @@ export class EventoService {
   }
 
   /** PUT: update the evento on the server */
-  updateEvento (evento: Evento): Observable<any> {
-    return this.http.put(this.eventosUrl, evento, httpOptions).pipe(
-      tap(_ => this.log(`updated evento id=${evento.id}`)),
-      catchError(this.handleError<any>('updateEvento'))
-    );
+  // updateEvento (id: number, evento: Evento): Observable<any> {
+  //   return this.http.put(this.eventosUrl, evento, httpOptions).pipe(
+  //     tap(_ => this.log(`updated evento id=${id}`)),
+  //     catchError(this.handleError<any>('updateEvento'))
+  //   );
+  // }
+  updateEvento(id: string|number, updateEvento: Evento) {
+    return this.http.put(`${this.eventosUrl}/${id}`, updateEvento);
   }
 
   /**
