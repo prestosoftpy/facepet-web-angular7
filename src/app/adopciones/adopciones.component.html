@@ -1,0 +1,40 @@
+<h2>Adopciones</h2>
+<div class="box-body">
+  <div class="box-header with-border right">
+    <button class="btn btn-success" routerLink="/adopciones-nuevo" data-toggle="modal" data-target="">
+      Adoptar
+    </button>
+  </div>
+  <br>
+
+  <table class="table table-bordered table-striped dt-responsive tablas">
+    <thead>
+      <tr>
+        <th>Id usuario</th>
+        <th>Id evento</th>
+        <th>Fecha</th>
+        <th>Celular</th>
+        <th>Dirección</th>
+        <th>Observación</th>
+        <th>Situación</th>
+        <th>Creado en fecha</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let adopcion of adopciones">
+      <tr>
+        <td>{{adopcion.id}}</td>
+        <td>{{adopcion.usuario_id}}</td>
+        <td>{{adopcion.fecha}}</td>
+        <td>{{adopcion.celular}}</td>
+        <td>{{adopcion.direccion}}</td>
+        <td>{{adopcion.obs}}</td>
+        <td>{{adopcion.situacion}}</td>
+        <td>{{adopcion.createdAt}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+  <div *ngIf="(adopciones  ).length === 0" class="alert alert-info" role="alert">
+    <strong>No hay</strong> registros que mostrar
+  </div>
+</div>

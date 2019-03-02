@@ -8,6 +8,8 @@ import { CiudadesComponent } from './components/ciudades/ciudades.component';
 import { UsuariosListComponent } from './components/usuarios-list/usuarios-list.component';
 import { CiudadFormComponent } from './components/ciudad-form/ciudad-form.component';
 import { EventoFormComponent } from './components/eventos-form/evento-form.component';
+import { AdopcionesComponent } from './adopciones/adopciones.component';
+import { AdopcionFormComponent } from './components/adopcion-form/adopcion-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -20,6 +22,8 @@ const routes: Routes = [
   { path: 'eventos', component: EventosListComponent },
   { path: 'eventos-nuevo', component: EventoFormComponent },
   { path: 'eventos-editar/:id', component: EventoFormComponent},
+  { path: 'adopciones', component: AdopcionesComponent},
+  { path: 'adopciones-nuevo', component: AdopcionFormComponent},
 ];
 
 @NgModule({

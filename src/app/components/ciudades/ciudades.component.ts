@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CiudadService } from '../../servicios/ciudad.service';
-import { Ciudad } from 'src/app/modelos/ciudad';
-import { CloudinaryOptions, CloudinaryUploader } from 'ng2-cloudinary';
-import { ToastrService } from 'ngx-toastr';
-
 
 @Component({
   selector: 'app-ciudades',

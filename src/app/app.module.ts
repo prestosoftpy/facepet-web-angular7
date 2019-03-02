@@ -18,6 +18,8 @@ import { EventoFormComponent } from './components/eventos-form/evento-form.compo
 import { CiudadFormComponent } from './components/ciudad-form/ciudad-form.component';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
+import { AdopcionesComponent } from './adopciones/adopciones.component';
+import { AdopcionFormComponent } from './components/adopcion-form/adopcion-form.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { FooterComponent } from './components/footer/footer.component';
     EventoFormComponent,
     CiudadFormComponent,
     FooterComponent,
+    AdopcionesComponent,
+    AdopcionFormComponent,
   ],
   imports: [
     BrowserModule,

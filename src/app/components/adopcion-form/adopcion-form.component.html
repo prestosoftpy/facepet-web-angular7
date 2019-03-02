@@ -1,0 +1,49 @@
+<br>
+<div>
+  <h1>Registro de Adopciones</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 form-group input">
+        <div class="form-group">
+          <label for="inputAdopcionUsuario">Usuario</label>
+          <div class="input-group">
+            <input id="idusuario" type="number" [(ngModel)] = "adopcion.idusuario" required class="form-control" placeholder="id">
+            <span class="input-group-addon">-</span>
+            <input id="nombreusuario" [(ngModel)] = "adopcion.nombreusuario" type="text" required class="form-control" placeholder="nombre">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <label for="inputAdopcionCelular">Celular</label>
+      <input type="text" name="celular" [(ngModel)]="adopcion.celular" class="form-control" 
+        placeholder="Ingrese nro de celular">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <label for="inputAdopcionCelular">Direccion</label>
+      <input type="text" name="direccion" [(ngModel)]="adopcion.direccion" class="form-control" placeholder="Ingrese dirección">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <label for="inputAdopcionCelular">Observaciones</label>
+      <input type="text" name="obs" [(ngModel)]="adopcion.obs" class="form-control" placeholder="Observaciones">
+    </div>
+  </div>
+<br>
+
+  <div class="row">
+    <div class="col-md-6 form-group">
+      <button type="submit" class="btn btn-primary" [disabled]="loading" (click)="save()">Guardar</button>
+      &nbsp;
+      <button type="submit" class="btn btn-primary" [disabled]="loading" (click)="clearFields()">Limpiar Campos</button>
+    </div>
+  </div>
+</div>

@@ -1,13 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
-import { HttpClientModule } from '@angular/common/http';
-import { HttpModule } from '@angular/http';
-import { catchError, tap } from 'rxjs/operators';
-
-
 import { Ciudad } from '../modelos/ciudad';
-import { MessageService } from '../message.service';
+
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-type': 'application-json'})
